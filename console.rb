@@ -3,6 +3,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 require 'highline'
+require 'httparty'
 
 # uri = 'https://api.spacetraders.io/v2/' + input
 
@@ -19,7 +20,7 @@ module TradeConsole
 
     def self.shell #create interactive shell to get user input and provide data
         cli = HighLine.new
-        input = cli.ask ">"
+        input = cli.ask "> "
         handle_cmds(input)
         shell()
     end
