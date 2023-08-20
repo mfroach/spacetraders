@@ -11,6 +11,12 @@ module TradeConsole
     @token = token_file.read
     include HTTParty
 
+    def self.request(sub_uri)
+        response = HTTParty.get @base_uri << sub_uri, {
+            headers: {"Authorization" => "Bearer #{@token}"}
+        }
+        return response
+    end
     def self.handle_cmds(input) #handle user input
         @input = input
         @cmds = ['help', 'balance', 'location', 'contracts', 'quit']
@@ -21,11 +27,11 @@ module TradeConsole
         end
     end
 
-    def self.shell #create interactive shell to get user input and provide data
+    def self.shell # create interactive shell to get user input and provide data
         cli = HighLine.new
         input = cli.ask "> "
         handle_cmds(input)
-        shell()
+        shell() # magic REPL (this is probably bad, do it better)
     end
 
     def self.help
@@ -40,13 +46,10 @@ module TradeConsole
         puts "A galaxy far, far away"
     end
 
-    def self.contracts
+    def self.contracts # check for available contracts
         sub_uri = '/my/contracts'
-        response = HTTParty.get @base_uri << sub_uri, {
-            headers: {"Authorization" => "Bearer #{@token}"}
-        }
-        responseHash = JSON.parse(response.body)
-        puts responseHash # clearly i need to learn how JSON works.
+        responseHash = JSON.parse(request(sub_uri).body) # todo: make an actual parser
+        puts responseHash.dig("data", 0, "id")
     end
 
     def self.quit
