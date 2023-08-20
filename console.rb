@@ -4,8 +4,6 @@ require 'uri'
 require 'highline'
 require 'httparty'
 
-# uri = 'https://api.spacetraders.io/v2/' + input
-
 module TradeConsole
 
     @base_uri = 'https://api.spacetraders.io/v2/'
