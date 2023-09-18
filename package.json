@@ -1,0 +1,28 @@
+{
+  "name": "spacetraders",
+  "version": "0.0.1",
+  "description": "spacetraders client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfroach/spacetraders.git"
+  },
+  "keywords": [
+    "spacetraders",
+    "rest",
+    "api",
+    "node"
+  ],
+  "author": "mfroach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfroach/spacetraders/issues"
+  },
+  "homepage": "https://github.com/mfroach/spacetraders#readme",
+  "dependencies": {
+    "node-rest-client": "^3.1.1"
+  }
+}
