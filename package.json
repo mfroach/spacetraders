@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mfroach/spacetraders#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "node-rest-client": "^3.1.1"
   }
 }
